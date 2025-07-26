@@ -31,20 +31,24 @@ A compassionate AI chatbot specifically designed to support neurodivergent indiv
 - **Example prompts** - Easy conversation starters
 - **Responsive design** - Works on different screen sizes
 
-## 🚀 Quick Start (Single Command)
+## 🚀 Ultimate One-Command Launch
 
-**Just run this one command to set up and launch LUNA:**
+**The simplest way to run LUNA - just one command that handles everything:**
 
 ```bash
-./setup_bot.sh && python neurodivergent_chatbot.py
+./run_luna.sh
 ```
 
-That's it! This command will:
-1. ✅ Create a virtual environment
-2. ✅ Install all Python dependencies
-3. ✅ Download and build the AI model (llama.cpp)
-4. ✅ Download the TinyLlama model file
-5. ✅ Launch LUNA in your browser at http://127.0.0.1:7860
+**That's it!** This intelligent launcher will:
+- 🔍 **Check if setup is needed** (first time or missing components)
+- 🛠️ **Automatically run full setup** if anything is missing
+- ⚡ **Skip setup and launch immediately** if already configured
+- 🌙 **Start LUNA** with proper virtual environment activation
+
+### What Happens:
+- **First time**: Automatically sets up everything (virtual environment, dependencies, llama.cpp build, model download) then launches LUNA
+- **Subsequent runs**: Detects existing setup and launches LUNA immediately
+- **Works from any state**: Fresh clone, partial setup, or complete installation
 
 ## 📋 System Requirements
 
@@ -54,23 +58,35 @@ That's it! This command will:
 - **Storage**: 2GB free space for model files
 - **Tools**: Git, CMake (auto-installed if missing)
 
-## 🔧 Manual Setup (If Needed)
+## 🔧 Alternative Setup Methods
 
-If the single command doesn't work, you can set up manually:
+### Option 1: Manual Setup (If Needed)
+If the one-command launcher doesn't work, you can set up manually:
 
 ```bash
 # 1. Clone the repository
 git clone https://github.com/rdevineni32509/Mental-Health-Group-4.git
 cd Mental-Health-Group-4
 
-# 2. Make setup script executable
-chmod +x setup_bot.sh
+# 2. Make scripts executable
+chmod +x setup_bot.sh run_luna.sh
 
 # 3. Run setup
 ./setup_bot.sh
 
 # 4. Launch LUNA
-python neurodivergent_chatbot.py
+source .venv/bin/activate && python neurodivergent_chatbot.py
+```
+
+### Option 2: Step-by-Step Process
+For complete control over each step:
+
+```bash
+# Setup only (without launching)
+./setup_bot.sh
+
+# Launch only (after setup is complete)
+./run_luna.sh
 ```
 
 ## 💡 How to Use LUNA
@@ -120,24 +136,29 @@ python neurodivergent_chatbot.py
 
 ### Common Issues
 
-1. **"Setup script fails"**
+1. **"Permission denied" when running launcher**
+   - Make scripts executable: `chmod +x run_luna.sh setup_bot.sh`
+   - Ensure you have write permissions in the directory
+
+2. **"Setup script fails"**
    - Ensure you have Python 3.9+ installed
    - Check internet connection for model download
    - Make sure you have sufficient disk space (2GB)
+   - Try manual setup: `./setup_bot.sh` then `./run_luna.sh`
 
-2. **"Port already in use"**
-   - LUNA runs on port 7860 by default
+3. **"Port already in use"**
+   - LUNA runs on ports 7860-7869 (automatically detects available port)
    - Kill existing processes: `pkill -f gradio`
-   - The app will automatically try ports 7860-7869
+   - Check the terminal output for the actual port being used
 
-3. **"Model not responding"**
-   - Check that llama.cpp built successfully
-   - Verify model file downloaded completely
+4. **"Model not responding"**
+   - The launcher will automatically detect and fix missing components
    - Check `chatbot.log` for detailed error information
+   - Try running `./run_luna.sh` again (it will re-setup if needed)
 
-4. **"Permission denied"**
-   - Make setup script executable: `chmod +x setup_bot.sh`
-   - Ensure you have write permissions in the directory
+5. **"Virtual environment issues"**
+   - The launcher handles virtual environment activation automatically
+   - If issues persist, delete `.venv` folder and run `./run_luna.sh` again
 
 ### Logs
 
