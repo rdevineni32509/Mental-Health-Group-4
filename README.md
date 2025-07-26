@@ -1,68 +1,52 @@
-# 🌱 Mental Health Chatbot
+# 🌙 LUNA - Neurodivergent Mental Health Companion
 
-A compassionate, neurodivergent-friendly chatbot designed to provide mental health support using local AI inference.
+A compassionate AI chatbot specifically designed to support neurodivergent individuals with their mental health journey. LUNA provides a safe, understanding space for conversation while maintaining complete privacy through local AI processing.
 
-## ✨ Features
+![LUNA Interface](https://img.shields.io/badge/Interface-Modern%20Chat-blue) ![Privacy](https://img.shields.io/badge/Privacy-100%25%20Local-green) ![Support](https://img.shields.io/badge/Support-Neurodivergent%20Friendly-purple)
 
-- **Neurodivergent-Friendly Design**: Clear, literal communication with patience and understanding
-- **Privacy-First**: Runs entirely locally - no data sent to external servers
-- **Comprehensive Error Handling**: Robust error management and graceful failure recovery
-- **Safety Features**: Built-in crisis detection and resource sharing
-- **Modern UI**: Clean, accessible Gradio interface
-- **Logging**: Detailed logging for debugging and monitoring
+## ✨ Key Features
 
-## 🚀 Quick Start
+### 🧠 **Neurodivergent-Specialized Support**
+- **Clear, literal communication** - No metaphors or confusing language
+- **Patient and validating responses** - Understanding of neurodivergent experiences
+- **Sensory sensitivity awareness** - Recognizes overstimulation and sensory needs
+- **Executive function support** - Helps with planning and organization challenges
+- **Masking fatigue understanding** - Validates the exhaustion of masking
 
-1. **Clone or download this repository**
-2. **Run the setup script**:
-   ```bash
-   chmod +x setup_bot.sh
-   ./setup_bot.sh
-   ```
-3. **The chatbot will launch automatically** at `http://localhost:7860`
+### 🛡️ **Safety & Crisis Support**
+- **Automatic crisis detection** - Identifies concerning language patterns
+- **Immediate resource sharing** - Provides crisis hotlines and emergency contacts
+- **Professional care guidance** - Encourages appropriate professional help
+- **Clear boundaries** - Honest about being peer support, not therapy
 
-## 📋 Requirements
+### 🔒 **Privacy & Security**
+- **100% local processing** - No data sent to external servers
+- **Offline capable** - Works without internet after setup
+- **No conversation logging** - Your privacy is completely protected
+- **Open source** - Transparent and auditable code
 
-- **Python 3.8+**
-- **Git**
-- **Build tools** (Xcode Command Line Tools on macOS, build-essential on Linux)
-- **curl**
-- **~2GB free disk space** (for model and dependencies)
+### 💬 **Modern Interface**
+- **Clean chat design** - Modern messaging interface like iMessage/WhatsApp
+- **Accessible UI** - Designed for neurodivergent users
+- **Example prompts** - Easy conversation starters
+- **Responsive design** - Works on different screen sizes
 
-## 🛠️ Manual Setup
+## 🚀 Quick Start (Single Command)
 
-If the automated setup doesn't work, you can set up manually:
+**Just run this one command to set up and launch LUNA:**
 
 ```bash
-# 1. Create virtual environment
-python3 -m venv .venv
-source .venv/bin/activate
-
-# 2. Install Python dependencies
-pip install -r requirements.txt
-
-# 3. Build llama.cpp
-git clone https://github.com/ggerganov/llama.cpp.git
-cd llama.cpp
-make
-cd ..
-
-# 4. Download model
-mkdir -p llama.cpp/models
-cd llama.cpp/models
-curl -L -o TinyLlama-1.1B-Chat-v1.0.Q4_K_M.gguf \
-  https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/resolve/main/TinyLlama-1.1B-Chat-v1.0.Q4_K_M.gguf
-cd ../../
-
-# 5. Run the chatbot
-python run_bot.py
+./setup_bot.sh && python neurodivergent_chatbot.py
 ```
 
-## 🎯 Usage
+That's it! This command will:
+1. ✅ Create a virtual environment
+2. ✅ Install all Python dependencies
+3. ✅ Download and build the AI model (llama.cpp)
+4. ✅ Download the TinyLlama model file
+5. ✅ Launch LUNA in your browser at http://127.0.0.1:7860
 
-1. **Start the chatbot** using `./setup_bot.sh` or `python run_bot.py`
-2. **Open your browser** to `http://localhost:7860`
-3. **Begin chatting** - the bot is designed to be patient and understanding
+## 📋 System Requirements
 
 - **Operating System**: macOS, Linux, or Windows
 - **Python**: 3.9 or higher
@@ -88,52 +72,72 @@ chmod +x setup_bot.sh
 # 4. Launch LUNA
 python neurodivergent_chatbot.py
 ```
-├── setup_bot.sh            # Automated setup script
-├── system_prompt.txt       # Comprehensive system prompt for the AI
-├── requirements.txt        # Python dependencies
-├── README.md              # This documentation
-├── chatbot.log            # Application logs (created at runtime)
-├── .venv/                 # Python virtual environment
-└── llama.cpp/             # Local LLM inference engine
-    ├── main               # Compiled executable
-    └── models/            # AI model files
-        └── TinyLlama-1.1B-Chat-v1.0.Q4_K_M.gguf
-```
 
-## 🔧 Configuration
+## 💡 How to Use LUNA
 
-Key settings can be modified in `run_bot.py`:
+1. **Open your browser** to the URL shown in the terminal (usually http://127.0.0.1:7860)
+2. **Read the safety information** displayed at the top
+3. **Start chatting** by typing in the message box or clicking example prompts
+4. **Be yourself** - LUNA is designed to understand neurodivergent communication
 
-```python
-CONFIG = {
-    'system_prompt_file': 'system_prompt.txt',
-    'llama_executable': './llama.cpp/main',
-    'model_path': 'llama.cpp/models/TinyLlama-1.1B-Chat-v1.0.Q4_K_M.gguf',
-    'max_tokens': 200,
-    'max_input_length': 1000,
-    'max_history_length': 10
-}
-```
+### 🗣️ Example Conversations
+- "I'm feeling overwhelmed by sensory input today"
+- "I'm struggling with executive function"
+- "I feel like I'm masking all the time"
+- "My routine got disrupted and I'm anxious"
+- "I don't understand social cues"
+- "I need help with emotional regulation"
+
+## 🆘 Crisis Resources
+
+**If you're in crisis or having thoughts of self-harm, please reach out immediately:**
+
+- **🇺🇸 National Suicide Prevention Lifeline**: **988**
+  - 24/7 confidential support from trained crisis counselors
+- **📱 Crisis Text Line**: Text **HOME** to **741741**
+  - 24/7 text-based crisis support
+- **🚨 Emergency Services**: **911**
+  - Immediate emergency response
+- **🧠 NAMI Helpline**: **1-800-950-NAMI (6264)**
+  - National Alliance on Mental Illness support
+
+## ⚠️ Important Disclaimers
+
+- **LUNA provides peer support, not professional therapy or medical advice**
+- **Cannot replace qualified mental health professionals, doctors, or crisis counselors**
+- **For serious mental health concerns, please seek professional help**
+- **In crisis situations, contact emergency services immediately**
+
+## 🛠️ Technical Details
+
+- **Framework**: Gradio for modern web interface
+- **AI Model**: TinyLlama 1.1B (optimized for mental health support)
+- **Processing**: Local inference via llama.cpp (no cloud dependency)
+- **Response Time**: Optimized for 2-5 second responses
+- **Privacy**: Zero data collection or external transmission
 
 ## 🐛 Troubleshooting
 
 ### Common Issues
 
-1. **"llama.cpp executable not found"**
-   - Run `./setup_bot.sh` to build llama.cpp
-   - Ensure build tools are installed
+1. **"Setup script fails"**
+   - Ensure you have Python 3.9+ installed
+   - Check internet connection for model download
+   - Make sure you have sufficient disk space (2GB)
 
-2. **"Model file not found"**
-   - Check internet connection and re-run setup
-   - Manually download model if needed
+2. **"Port already in use"**
+   - LUNA runs on port 7860 by default
+   - Kill existing processes: `pkill -f gradio`
+   - The app will automatically try ports 7860-7869
 
-3. **Python import errors**
-   - Activate virtual environment: `source .venv/bin/activate`
-   - Install dependencies: `pip install -r requirements.txt`
+3. **"Model not responding"**
+   - Check that llama.cpp built successfully
+   - Verify model file downloaded completely
+   - Check `chatbot.log` for detailed error information
 
-4. **Port already in use**
-   - The app runs on port 7860 by default
-   - Kill existing processes or modify the port in `run_bot.py`
+4. **"Permission denied"**
+   - Make setup script executable: `chmod +x setup_bot.sh`
+   - Ensure you have write permissions in the directory
 
 ### Logs
 
@@ -141,24 +145,24 @@ Check `chatbot.log` for detailed error information and debugging output.
 
 ## 🤝 Contributing
 
-This project is designed to support neurodivergent individuals. When contributing:
+We welcome contributions to make LUNA even better for the neurodivergent community:
 
-1. **Maintain accessibility** - clear, literal language
-2. **Preserve safety features** - never remove crisis detection
-3. **Test thoroughly** - ensure error handling works
-4. **Document changes** - update README and comments
-
-## ⚠️ Important Notes
-
-- **Not a replacement for professional care**: This is peer support, not therapy
-- **Privacy**: All processing happens locally, but logs are stored on disk
-- **Limitations**: AI responses may not always be perfect - use judgment
-- **Crisis situations**: Always prioritize professional help for serious concerns
+1. Fork the repository
+2. Create a feature branch
+3. Make your improvements
+4. Test thoroughly
+5. Submit a pull request
 
 ## 📄 License
 
-This project is intended for educational and support purposes. Please use responsibly and in accordance with mental health best practices.
+MIT License - See LICENSE file for details
+
+## 🙏 Acknowledgments
+
+- Built with love for the neurodivergent community
+- Powered by open-source AI technology
+- Designed with accessibility and inclusion in mind
 
 ---
 
-**Remember**: You deserve support, understanding, and care. This tool is here to help, but professional mental health resources are always available when you need them. 💙
+**Remember: You are valid, your experiences matter, and support is always available. 🌙✨**
