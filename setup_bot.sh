@@ -38,19 +38,53 @@ echo "✅ Git found"
 
 # Check/Install CMake
 if ! command_exists cmake; then
-    echo "⚠️  CMake not found. Attempting to install..."
+    echo "⚠️  CMake not found. Attempting automatic installation..."
+    
+    # Try different package managers based on the system
     if command_exists brew; then
+        echo "📦 Installing CMake using Homebrew..."
         brew install cmake
     elif command_exists apt-get; then
+        echo "📦 Installing CMake using apt-get..."
         sudo apt-get update && sudo apt-get install -y cmake
     elif command_exists yum; then
+        echo "📦 Installing CMake using yum..."
         sudo yum install -y cmake
+    elif command_exists dnf; then
+        echo "📦 Installing CMake using dnf..."
+        sudo dnf install -y cmake
+    elif command_exists pacman; then
+        echo "📦 Installing CMake using pacman..."
+        sudo pacman -S --noconfirm cmake
+    elif command_exists zypper; then
+        echo "📦 Installing CMake using zypper..."
+        sudo zypper install -y cmake
+    elif command_exists apk; then
+        echo "📦 Installing CMake using apk..."
+        sudo apk add cmake
     else
-        echo "❌ Please install CMake manually from https://cmake.org"
+        echo "❌ Could not automatically install CMake."
+        echo "   Please install CMake manually:"
+        echo "   • macOS: brew install cmake"
+        echo "   • Ubuntu/Debian: sudo apt-get install cmake"
+        echo "   • CentOS/RHEL: sudo yum install cmake"
+        echo "   • Fedora: sudo dnf install cmake"
+        echo "   • Arch Linux: sudo pacman -S cmake"
+        echo "   • Or download from: https://cmake.org/download/"
         exit 1
     fi
+    
+    # Verify installation was successful
+    if ! command_exists cmake; then
+        echo "❌ CMake installation failed. Please install manually."
+        exit 1
+    fi
+    
+    echo "✅ CMake installed successfully"
+else
+    CMAKE_VERSION=$(cmake --version | head -n1 | cut -d' ' -f3)
+    echo "✅ CMake $CMAKE_VERSION found"
 fi
-echo "✅ CMake found"
 
 echo ""
 

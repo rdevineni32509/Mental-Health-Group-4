@@ -33,22 +33,41 @@ A compassionate AI chatbot specifically designed to support neurodivergent indiv
 
 ## 🚀 Ultimate One-Command Launch
 
+### 🐧 **macOS & Linux**
 **The simplest way to run LUNA - just one command that handles everything:**
 
 ```bash
 ./run_luna.sh
 ```
 
-**That's it!** This intelligent launcher will:
+### 🪟 **Windows**
+**Choose your preferred Windows setup method:**
+
+**PowerShell (Recommended):**
+```powershell
+.\setup_bot.ps1
+.\venv\Scripts\Activate.ps1
+python neurodivergent_chatbot.py
+```
+
+**Command Prompt/Batch:**
+```cmd
+setup_bot.bat
+.venv\Scripts\activate.bat
+python neurodivergent_chatbot.py
+```
+
+**That's it!** These intelligent launchers will:
 - 🔍 **Check if setup is needed** (first time or missing components)
-- 🛠️ **Automatically run full setup** if anything is missing
+- 🛠️ **Automatically install dependencies** including CMake if missing
 - ⚡ **Skip setup and launch immediately** if already configured
 - 🌙 **Start LUNA** with proper virtual environment activation
 
 ### What Happens:
-- **First time**: Automatically sets up everything (virtual environment, dependencies, llama.cpp build, model download) then launches LUNA
+- **First time**: Automatically sets up everything (virtual environment, dependencies, CMake, llama.cpp build, model download) then launches LUNA
 - **Subsequent runs**: Detects existing setup and launches LUNA immediately
 - **Works from any state**: Fresh clone, partial setup, or complete installation
+- **Cross-platform**: Native support for macOS, Linux, and Windows
 
 ## 📋 System Requirements
 
@@ -56,13 +75,28 @@ A compassionate AI chatbot specifically designed to support neurodivergent indiv
 - **Python**: 3.9 or higher
 - **Memory**: 4GB RAM minimum (8GB recommended)
 - **Storage**: 2GB free space for model files
-- **Tools**: Git, CMake (auto-installed if missing)
+- **Tools**: Git, CMake (auto-installed if missing using system package managers)
+
+### 🔧 **Automatic Dependency Installation**
+
+LUNA's setup scripts automatically install CMake using your system's package manager:
+
+- **macOS**: Homebrew (`brew install cmake`)
+- **Ubuntu/Debian**: apt-get (`sudo apt-get install cmake`)
+- **CentOS/RHEL**: yum (`sudo yum install cmake`)
+- **Fedora**: dnf (`sudo dnf install cmake`)
+- **Arch Linux**: pacman (`sudo pacman -S cmake`)
+- **openSUSE**: zypper (`sudo zypper install cmake`)
+- **Alpine Linux**: apk (`sudo apk add cmake`)
+- **Windows**: Chocolatey, winget, or Scoop
+
+If no package manager is detected, clear manual installation instructions are provided.
 
 ## 🔧 Alternative Setup Methods
 
 ### Option 1: Manual Setup (If Needed)
-If the one-command launcher doesn't work, you can set up manually:
 
+**macOS/Linux:**
 ```bash
 # 1. Clone the repository
 git clone https://github.com/rdevineni32509/Mental-Health-Group-4.git
@@ -78,15 +112,39 @@ chmod +x setup_bot.sh run_luna.sh
 source .venv/bin/activate && python neurodivergent_chatbot.py
 ```
 
+**Windows:**
+```cmd
+REM 1. Clone the repository
+git clone https://github.com/rdevineni32509/Mental-Health-Group-4.git
+cd Mental-Health-Group-4
+
+REM 2. Run setup (choose one)
+setup_bot.bat
+REM OR: .\setup_bot.ps1
+
+REM 3. Launch LUNA
+.venv\Scripts\activate.bat && python neurodivergent_chatbot.py
+```
+
 ### Option 2: Step-by-Step Process
 For complete control over each step:
 
+**macOS/Linux:**
 ```bash
 # Setup only (without launching)
 ./setup_bot.sh
 
 # Launch only (after setup is complete)
 ./run_luna.sh
+```
+
+**Windows:**
+```cmd
+REM Setup only
+setup_bot.bat
+
+REM Launch only (after setup is complete)
+.venv\Scripts\activate.bat && python neurodivergent_chatbot.py
 ```
 
 ## 💡 How to Use LUNA
@@ -136,17 +194,29 @@ For complete control over each step:
 
 ### Common Issues
 
-1. **"Permission denied" when running launcher**
+1. **"Permission denied" when running launcher (macOS/Linux)**
    - Make scripts executable: `chmod +x run_luna.sh setup_bot.sh`
    - Ensure you have write permissions in the directory
 
-2. **"Setup script fails"**
+2. **"Execution Policy" error on Windows (PowerShell)**
+   - Run: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
+   - Or use the batch script instead: `setup_bot.bat`
+
+3. **"Setup script fails"**
    - Ensure you have Python 3.9+ installed
    - Check internet connection for model download
    - Make sure you have sufficient disk space (2GB)
-   - Try manual setup: `./setup_bot.sh` then `./run_luna.sh`
+   - **macOS/Linux**: Try manual setup: `./setup_bot.sh` then `./run_luna.sh`
+   - **Windows**: Try manual setup: `setup_bot.bat` then activate and run
 
-3. **"Port already in use"**
+4. **"CMake not found" error**
+   - The setup scripts should auto-install CMake
+   - If auto-installation fails, install manually:
+     - **macOS**: `brew install cmake`
+     - **Ubuntu/Debian**: `sudo apt-get install cmake`
+     - **Windows**: Download from https://cmake.org or install Chocolatey
+
+5. **"Port already in use"**
    - LUNA runs on ports 7860-7869 (automatically detects available port)
    - Kill existing processes: `pkill -f gradio`
    - Check the terminal output for the actual port being used
