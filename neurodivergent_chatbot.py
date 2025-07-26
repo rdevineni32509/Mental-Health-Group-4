@@ -357,217 +357,188 @@ Your mental health companion specialised in Neurodivergence conversations
         ],
         theme=gr.themes.Default(),
         css="""
-        /* Plain text interface - no colors or styling */
+        /* Soft backgrounds with clean styling */
         
-        /* Remove all backgrounds and colors */
-        * {
-            background: transparent !important;
-            background-color: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-            outline: none !important;
-        }
-        
-        /* Container - plain and simple */
+        /* Container with soft background */
         .gradio-container {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
             max-width: 800px !important;
             margin: 0 auto !important;
             padding: 20px !important;
-            background: white !important;
+            background: #f8f9fa !important;
         }
         
-        /* Header - plain text with bold */
+        /* Header with soft background */
         .gradio-container h1 {
             text-align: center !important;
             font-size: 28px !important;
             font-weight: bold !important;
             margin: 0 0 20px 0 !important;
-            color: black !important;
-        }
-        
-        /* Safety information - plain text with bold emphasis */
-        .gradio-container .prose {
-            background: white !important;
-            border: 1px solid #ccc !important;
+            color: #333 !important;
+            background: #e9ecef !important;
             padding: 15px !important;
-            margin-bottom: 20px !important;
-            font-size: 14px !important;
-            line-height: 1.5 !important;
-            color: black !important;
+            border-radius: 8px !important;
         }
         
-        /* Chat interface - completely plain */
+        /* Safety information with soft background and bold text */
+        .gradio-container .prose {
+            background: #fff3cd !important;
+            border: 1px solid #ffeaa7 !important;
+            border-radius: 8px !important;
+            padding: 20px !important;
+            margin-bottom: 20px !important;
+            font-size: 15px !important;
+            line-height: 1.6 !important;
+            color: #856404 !important;
+        }
+        
+        /* Make all safety info bold */
+        .gradio-container .prose,
+        .gradio-container .prose p,
+        .gradio-container .prose li {
+            font-weight: bold !important;
+        }
+        
+        /* Chat interface with soft background */
         .chatbot {
             background: white !important;
-            border: 1px solid #ddd !important;
+            border: 1px solid #dee2e6 !important;
+            border-radius: 8px !important;
             margin: 0 auto !important;
             height: 500px !important;
             min-height: 500px !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
         }
         
-        /* Remove ALL styling from chat elements */
-        .chatbot *,
-        .chatbot *::before,
-        .chatbot *::after {
-            background: transparent !important;
-            background-color: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-            outline: none !important;
-            margin: 0 !important;
-            padding: 0 !important;
-        }
-        
-        /* Chat container - plain white */
+        /* Chat container with soft background */
         .chatbot > div {
-            background: white !important;
+            background: #fafafa !important;
             padding: 15px !important;
             height: 100% !important;
             overflow-y: auto !important;
         }
         
-        /* All messages - plain text only */
-        .chatbot .message,
+        /* User messages with soft blue background */
         .chatbot div[data-testid="user"],
-        .chatbot div[data-testid="bot"],
         .chatbot .user,
-        .chatbot .bot,
         .chatbot div[data-testid="user"] p,
         .chatbot .user p,
         .chatbot .message.user,
-        .chatbot [class*="user"],
+        .chatbot [class*="user"] {
+            background: #e3f2fd !important;
+            color: #1565c0 !important;
+            border: 1px solid #bbdefb !important;
+            border-radius: 8px !important;
+            padding: 12px !important;
+            margin: 8px 0 !important;
+            font-size: 16px !important;
+            line-height: 1.4 !important;
+            max-width: 85% !important;
+            margin-left: auto !important;
+            word-wrap: break-word !important;
+            display: block !important;
+        }
+        
+        /* Bot messages with soft gray background */
+        .chatbot div[data-testid="bot"],
+        .chatbot .bot,
         .chatbot div[data-testid="bot"] p,
         .chatbot .bot p,
         .chatbot .message.bot,
         .chatbot [class*="bot"] {
-            background: transparent !important;
-            background-color: transparent !important;
-            color: black !important;
-            border: none !important;
-            border-radius: 0 !important;
-            padding: 8px 0 !important;
+            background: #f5f5f5 !important;
+            color: #333 !important;
+            border: 1px solid #e0e0e0 !important;
+            border-radius: 8px !important;
+            padding: 12px !important;
             margin: 8px 0 !important;
             font-size: 16px !important;
             line-height: 1.4 !important;
-            max-width: 100% !important;
-            float: none !important;
-            clear: both !important;
+            max-width: 85% !important;
             word-wrap: break-word !important;
-            box-shadow: none !important;
             display: block !important;
         }
         
-        /* User messages - bold text with prefix */
+        /* User messages - bold prefix */
         .chatbot div[data-testid="user"] p::before,
         .chatbot .user p::before,
         .chatbot .message.user::before,
         .chatbot [class*="user"]::before {
-            content: "You: " !important;
+            content: "You:" !important;
             font-weight: bold !important;
         }
         
-        /* Bot messages - bold text with prefix */
+        /* Bot messages - bold prefix */
         .chatbot div[data-testid="bot"] p::before,
         .chatbot .bot p::before,
         .chatbot .message.bot::before,
         .chatbot [class*="bot"]::before {
-            content: "Luna: " !important;
+            content: "Luna:" !important;
             font-weight: bold !important;
         }
         
-        /* Input area - plain styling */
+        /* Input area with soft styling */
         .chatbot textarea {
-            border: 1px solid #ccc !important;
-            border-radius: 4px !important;
-            padding: 8px 12px !important;
+            border: 1px solid #ced4da !important;
+            border-radius: 6px !important;
+            padding: 12px !important;
             font-size: 16px !important;
             font-family: inherit !important;
             background: white !important;
             resize: none !important;
             outline: none !important;
-            color: black !important;
+            color: #333 !important;
         }
         
         .chatbot textarea:focus {
-            border-color: #999 !important;
+            border-color: #80bdff !important;
+            box-shadow: 0 0 0 2px rgba(0,123,255,0.25) !important;
         }
         
         .chatbot textarea::placeholder {
-            color: #666 !important;
+            color: #6c757d !important;
         }
         
-        /* Submit button - plain styling */
+        /* Submit button with soft styling */
         .chatbot button {
-            background: white !important;
-            color: black !important;
-            border: 1px solid #ccc !important;
-            border-radius: 4px !important;
-            padding: 8px 16px !important;
+            background: #007bff !important;
+            color: white !important;
+            border: 1px solid #007bff !important;
+            border-radius: 6px !important;
+            padding: 10px 20px !important;
             font-size: 16px !important;
             font-weight: bold !important;
             cursor: pointer !important;
         }
         
         .chatbot button:hover {
-            background: #f5f5f5 !important;
+            background: #0056b3 !important;
+            border-color: #0056b3 !important;
         }
         
-        /* Examples section - plain styling */
+        /* Examples section with soft background */
         .examples {
-            margin-top: 15px !important;
+            background: #f8f9fa !important;
+            border: 1px solid #dee2e6 !important;
+            border-radius: 8px !important;
+            padding: 15px !important;
+            margin-top: 20px !important;
         }
         
         .examples button {
             background: white !important;
-            border: 1px solid #ccc !important;
-            border-radius: 4px !important;
+            border: 1px solid #ced4da !important;
+            border-radius: 6px !important;
             padding: 8px 12px !important;
-            margin: 3px !important;
+            margin: 4px !important;
             font-size: 14px !important;
-            color: black !important;
+            color: #495057 !important;
             cursor: pointer !important;
         }
         
         .examples button:hover {
-            background: #f5f5f5 !important;
-        }
-        
-        /* Final cleanup - ensure everything is plain */
-        .chatbot::after {
-            content: "" !important;
-            display: table !important;
-            clear: both !important;
-        }
-        
-        /* Prepare llama.cpp command */
-        cmd = [
-            './llama.cpp/build/bin/llama-cli',
-        
-        /* Force all elements to be plain */
-        .chatbot [class*="message"],
-        .chatbot [class*="chat"],
-        .chatbot [class*="bubble"],
-        .chatbot div,
-        .chatbot span,
-        .chatbot p {
-            background: transparent !important;
-            background-color: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-            color: black !important;
-        }
-        
-        /* Ensure chat container stays white */
-        .chatbot > div {
-            background: white !important;
-            background-color: white !important;
-        }
-        
-        /* Bold text for important information */
-        .gradio-container .prose strong,
-        .gradio-container .prose b {
-            font-weight: bold !important;
+            background: #e9ecef !important;
+            border-color: #adb5bd !important;
         }
         """
     )
