@@ -63,38 +63,31 @@ python run_bot.py
 1. **Start the chatbot** using `./setup_bot.sh` or `python run_bot.py`
 2. **Open your browser** to `http://localhost:7860`
 3. **Begin chatting** - the bot is designed to be patient and understanding
-4. **Be specific** about your feelings and experiences for better support
 
-### 💡 Tips for Better Conversations
+- **Operating System**: macOS, Linux, or Windows
+- **Python**: 3.9 or higher
+- **Memory**: 4GB RAM minimum (8GB recommended)
+- **Storage**: 2GB free space for model files
+- **Tools**: Git, CMake (auto-installed if missing)
 
-- Take your time - there's no rush
-- Be specific about what you're feeling or experiencing
-- Ask for clarification or examples if needed
-- The bot validates all emotions without judgment
+## 🔧 Manual Setup (If Needed)
 
-## 🔒 Safety Features
+If the single command doesn't work, you can set up manually:
 
-The chatbot includes built-in safety measures:
+```bash
+# 1. Clone the repository
+git clone https://github.com/rdevineni32509/Mental-Health-Group-4.git
+cd Mental-Health-Group-4
 
-- **Crisis Detection**: Recognizes mentions of self-harm or suicidal thoughts
-- **Resource Sharing**: Provides crisis hotline numbers and emergency contacts
-- **Professional Referrals**: Suggests professional help when appropriate
-- **Scope Awareness**: Clearly defines its role as peer support, not therapy
+# 2. Make setup script executable
+chmod +x setup_bot.sh
 
-### 🆘 Crisis Resources
+# 3. Run setup
+./setup_bot.sh
 
-If you're in crisis, please reach out immediately:
-
-- **National Suicide Prevention Lifeline**: 988
-- **Crisis Text Line**: Text HOME to 741741
-- **Emergency Services**: 911
-- **Contact trusted friends, family, or mental health professionals**
-
-## 🏗️ Architecture
-
+# 4. Launch LUNA
+python neurodivergent_chatbot.py
 ```
-Mental-Health-Group-4/
-├── run_bot.py              # Main application with enhanced error handling
 ├── setup_bot.sh            # Automated setup script
 ├── system_prompt.txt       # Comprehensive system prompt for the AI
 ├── requirements.txt        # Python dependencies

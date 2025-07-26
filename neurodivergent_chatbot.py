@@ -540,6 +540,10 @@ Your mental health companion specialised in Neurodivergence conversations
             clear: both !important;
         }
         
+        /* Prepare llama.cpp command */
+        cmd = [
+            './llama.cpp/build/bin/llama-cli',
+        
         /* Force all elements to be plain */
         .chatbot [class*="message"],
         .chatbot [class*="chat"],

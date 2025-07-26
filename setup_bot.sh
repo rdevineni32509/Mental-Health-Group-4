@@ -58,73 +58,83 @@ check_requirements() {
     
     if ! command_exists cmake; then
         log_error "CMake is required but not installed."
-        echo "Please install CMake and try again. On macOS: brew install cmake"
-        exit 1
-    fi
-    
-    if ! command_exists curl; then
-        log_error "curl is required but not installed."
-        echo "Please install curl and try again."
-        exit 1
-    fi
-    
-    log_success "All system requirements met"
-}
 
-# Create virtual environment
-setup_venv() {
-    log "🌱 Setting up Python virtual environment..."
-    
-    if [ -d ".venv" ]; then
-        log_warning "Virtual environment already exists, skipping creation"
+# Check Python 3.9+
+if ! command_exists python3; then
+    echo "❌ Python 3 is required but not installed."
+    echo "   Please install Python 3.9 or higher from https://python.org"
+    exit 1
+fi
+
+PYTHON_VERSION=$(python3 -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
+echo "✅ Python $PYTHON_VERSION found"
+
+# Check Git
+if ! command_exists git; then
+    echo "❌ Git is required but not installed."
+    echo "   Please install Git from https://git-scm.com"
+    exit 1
+fi
+echo "✅ Git found"
+
+# Check/Install CMake
+if ! command_exists cmake; then
+    echo "⚠️  CMake not found. Attempting to install..."
+    if command_exists brew; then
+        brew install cmake
+    elif command_exists apt-get; then
+        sudo apt-get update && sudo apt-get install -y cmake
+    elif command_exists yum; then
+        sudo yum install -y cmake
     else
-        python3 -m venv .venv
-        log_success "Virtual environment created"
+        echo "❌ Please install CMake manually from https://cmake.org"
+        exit 1
     fi
-    
-    # Activate virtual environment
-    source .venv/bin/activate
-    log_success "Virtual environment activated"
-}
+fi
+echo "✅ CMake found"
+
+echo ""
+
+# Create virtual environment if it doesn't exist
+if [ ! -d ".venv" ]; then
+    echo "📦 Creating Python virtual environment..."
+    python3 -m venv .venv
+    echo "✅ Virtual environment created"
+else
+    echo "✅ Virtual environment already exists"
+fi
+
+# Activate virtual environment
+echo "🔧 Activating virtual environment..."
+source .venv/bin/activate
+
+# Upgrade pip
+echo "⬆️  Upgrading pip..."
+pip install --upgrade pip --quiet
+echo "✅ Pip upgraded"
 
 # Install Python dependencies
-install_python_deps() {
-    log "📦 Installing Python dependencies..."
-    
-    # Upgrade pip
-    pip install --upgrade pip
-    
-    # Install from requirements.txt if it exists, otherwise install gradio directly
-    if [ -f "requirements.txt" ]; then
-        pip install -r requirements.txt
-        log_success "Dependencies installed from requirements.txt"
-    else
-        pip install gradio
-        log_success "Gradio installed"
-    fi
-}
+echo "📚 Installing Python dependencies..."
+pip install -r requirements.txt --quiet
+echo "✅ Python dependencies installed"
 
-# Setup llama.cpp
-setup_llama() {
-    log "🛠️ Setting up llama.cpp..."
-    
-    if [ -d "llama.cpp" ]; then
-        log_warning "llama.cpp directory already exists"
-        cd llama.cpp
-        
-        # Check if it's a git repository and pull updates
-        if [ -d ".git" ]; then
-            log "Updating llama.cpp..."
-            git pull origin master || log_warning "Failed to update llama.cpp"
-        fi
-    else
-        log "Cloning llama.cpp repository..."
-        git clone https://github.com/ggerganov/llama.cpp.git
-        cd llama.cpp
-        log_success "llama.cpp cloned successfully"
+# Clone and build llama.cpp if not exists
+if [ ! -d "llama.cpp" ]; then
+    echo "🤖 Cloning llama.cpp repository..."
+    git clone https://github.com/ggerganov/llama.cpp.git --quiet
+    echo "✅ llama.cpp repository cloned"
+else
+    echo "✅ llama.cpp repository already exists"
+fi
+
+cd llama.cpp
+
+# Build llama.cpp using CMake
+if [ ! -f "build/bin/llama-cli" ]; then
+    echo "🔨 Building llama.cpp with CMake (this may take a few minutes)..."
+    if [ ! -d "build" ]; then
+        mkdir build
     fi
-    
-    # Build llama.cpp using CMake
     log "Building llama.cpp with CMake..."
     
     # Create build directory
