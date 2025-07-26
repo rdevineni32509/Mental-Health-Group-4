@@ -283,10 +283,10 @@ def find_free_port(start_port=7860):
     return None
 
 def create_interface():
-    """Create modern messaging interface like iMessage/WhatsApp"""
+    """Create enhanced neurodivergent-friendly ChatInterface with improved styling"""
     
     def chat_with_luna(message, history):
-        """Chat function for messenger-style interface"""
+        """Chat function for enhanced messaging interface"""
         if not message or not message.strip():
             return "I'm here when you're ready to share. Take your time. 💙"
         
@@ -317,258 +317,226 @@ def create_interface():
             logger.error(f"Error in chat_with_luna: {e}")
             return "I encountered an unexpected issue. This isn't your fault - sometimes technology has hiccups. Please try again. 💙"
     
-    # Create clean modern messaging interface with safety information
+    # Enhanced ChatInterface with improved styling and features
     interface = gr.ChatInterface(
         fn=chat_with_luna,
-        title="🌙 LUNA",
+        title="🌙 LUNA - Your Neurodivergent-Friendly Mental Health Companion",
         description="""
-🛡️ IMPORTANT SAFETY INFORMATION
+### 🛡️ **Important Safety Information**
 
-⚠️ This is peer support, not professional therapy or medical advice.
+**This is peer support, not professional therapy or medical advice.**
 
-Luna provides emotional support and understanding but cannot replace professional mental health care, diagnosis, or treatment. If you are experiencing severe mental health symptoms, please consult with a qualified healthcare provider.
+LUNA provides emotional support and understanding but cannot replace professional mental health care, diagnosis, or treatment. If you are experiencing severe mental health symptoms, please consult with a qualified healthcare provider.
 
-🆘 CRISIS RESOURCES - AVAILABLE 24/7:
+#### 🆘 **Crisis Resources - Available 24/7:**
 
-• 988 - National Suicide Prevention Lifeline
-  Free, confidential support for people in distress and prevention resources
+- **📞 988** - National Suicide Prevention Lifeline  
+- **📱 741741** - Crisis Text Line (Text HOME)  
+- **🆘 911** - Emergency Services  
 
-• Text HOME to 741741 - Crisis Text Line
-  Free, 24/7 support via text message with trained crisis counselors
-
-• 911 - Emergency Services
-  For immediate medical emergencies or if you are in immediate danger
-
-💙 Remember: You deserve support and care. If you are having thoughts of self-harm or suicide, please reach out immediately. These resources are staffed by trained professionals who understand what you are going through.
+**💙 Remember:** You deserve support and care. If you are having thoughts of self-harm or suicide, please reach out immediately.
 
 ---
 
-Your mental health companion specialised in Neurodivergence conversations
+**🌟 Welcome to your safe space for neurodivergent mental health support.**
         """,
         examples=[
-            "I'm feeling overwhelmed with work and don't know how to cope",
-            "Can you help me understand why I'm feeling this way?",
-            "I'm struggling with social situations and feel anxious",
-            "How do I manage sensory overload when I'm out in public?",
-            "I had a meltdown earlier and I'm feeling ashamed about it",
-            "My executive function is terrible today and I can't focus",
-            "I feel like I don't fit in anywhere",
-            "I'm having trouble with social cues and it's making me anxious"
+            "🧠 My executive function is terrible today and I can't focus",
+            "😰 I'm struggling with social situations and feel anxious", 
+            "🌪️ How do I manage sensory overload when I'm out in public?",
+            "💭 I had a meltdown earlier and I'm feeling ashamed about it",
+            "👥 I feel like I don't fit in anywhere",
+            "🎭 I'm tired of masking all the time and feeling exhausted",
+            "🤔 I don't understand social cues and it's making me anxious",
+            "💪 Can you help me understand why I'm feeling this way?"
         ],
-        theme=gr.themes.Default(),
+        theme=gr.themes.Soft(),
         css="""
-        /* Plain text interface - no colors or styling */
-        
-        /* Remove all backgrounds and colors */
-        * {
-            background: transparent !important;
-            background-color: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-            outline: none !important;
-        }
-        
-        /* Container - plain and simple */
-        .gradio-container {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
-            max-width: 800px !important;
-            margin: 0 auto !important;
-            padding: 20px !important;
-            background: white !important;
-        }
-        
-        /* Header - plain text with bold */
-        .gradio-container h1 {
-            text-align: center !important;
-            font-size: 28px !important;
-            font-weight: bold !important;
-            margin: 0 0 20px 0 !important;
-            color: black !important;
-        }
-        
-        /* Safety information - plain text with bold emphasis */
-        .gradio-container .prose {
-            background: white !important;
-            border: 1px solid #ccc !important;
-            padding: 15px !important;
-            margin-bottom: 20px !important;
-            font-size: 14px !important;
-            line-height: 1.5 !important;
-            color: black !important;
-        }
-        
-        /* Chat interface - completely plain */
-        .chatbot {
-            background: white !important;
-            border: 1px solid #ddd !important;
-            margin: 0 auto !important;
-            height: 500px !important;
-            min-height: 500px !important;
-        }
-        
-        /* Remove ALL styling from chat elements */
-        .chatbot *,
-        .chatbot *::before,
-        .chatbot *::after {
-            background: transparent !important;
-            background-color: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-            outline: none !important;
-            margin: 0 !important;
-            padding: 0 !important;
-        }
-        
-        /* Chat container - plain white */
-        .chatbot > div {
-            background: white !important;
-            padding: 15px !important;
-            height: 100% !important;
-            overflow-y: auto !important;
-        }
-        
-        /* All messages - plain text only */
-        .chatbot .message,
-        .chatbot div[data-testid="user"],
-        .chatbot div[data-testid="bot"],
-        .chatbot .user,
-        .chatbot .bot,
-        .chatbot div[data-testid="user"] p,
-        .chatbot .user p,
-        .chatbot .message.user,
-        .chatbot [class*="user"],
-        .chatbot div[data-testid="bot"] p,
-        .chatbot .bot p,
-        .chatbot .message.bot,
-        .chatbot [class*="bot"] {
-            background: transparent !important;
-            background-color: transparent !important;
-            color: black !important;
-            border: none !important;
-            border-radius: 0 !important;
-            padding: 8px 0 !important;
-            margin: 8px 0 !important;
-            font-size: 16px !important;
-            line-height: 1.4 !important;
-            max-width: 100% !important;
-            float: none !important;
-            clear: both !important;
-            word-wrap: break-word !important;
-            box-shadow: none !important;
-            display: block !important;
-        }
-        
-        /* User messages - bold text with prefix */
-        .chatbot div[data-testid="user"] p::before,
-        .chatbot .user p::before,
-        .chatbot .message.user::before,
-        .chatbot [class*="user"]::before {
-            content: "You: " !important;
-            font-weight: bold !important;
-        }
-        
-        /* Bot messages - bold text with prefix */
-        .chatbot div[data-testid="bot"] p::before,
-        .chatbot .bot p::before,
-        .chatbot .message.bot::before,
-        .chatbot [class*="bot"]::before {
-            content: "Luna: " !important;
-            font-weight: bold !important;
-        }
-        
-        /* Input area - plain styling */
-        .chatbot textarea {
-            border: 1px solid #ccc !important;
-            border-radius: 4px !important;
-            padding: 8px 12px !important;
-            font-size: 16px !important;
-            font-family: inherit !important;
-            background: white !important;
-            resize: none !important;
-            outline: none !important;
-            color: black !important;
-        }
-        
-        .chatbot textarea:focus {
-            border-color: #999 !important;
-        }
-        
-        .chatbot textarea::placeholder {
-            color: #666 !important;
-        }
-        
-        /* Submit button - plain styling */
-        .chatbot button {
-            background: white !important;
-            color: black !important;
-            border: 1px solid #ccc !important;
-            border-radius: 4px !important;
-            padding: 8px 16px !important;
-            font-size: 16px !important;
-            font-weight: bold !important;
-            cursor: pointer !important;
-        }
-        
-        .chatbot button:hover {
-            background: #f5f5f5 !important;
-        }
-        
-        /* Examples section - plain styling */
-        .examples {
-            margin-top: 15px !important;
-        }
-        
-        .examples button {
-            background: white !important;
-            border: 1px solid #ccc !important;
-            border-radius: 4px !important;
-            padding: 8px 12px !important;
-            margin: 3px !important;
-            font-size: 14px !important;
-            color: black !important;
-            cursor: pointer !important;
-        }
-        
-        .examples button:hover {
-            background: #f5f5f5 !important;
-        }
-        
-        /* Final cleanup - ensure everything is plain */
-        .chatbot::after {
-            content: "" !important;
-            display: table !important;
-            clear: both !important;
-        }
-        
-        /* Prepare llama.cpp command */
-        cmd = [
-            './llama.cpp/build/bin/llama-cli',
-        
-        /* Force all elements to be plain */
-        .chatbot [class*="message"],
-        .chatbot [class*="chat"],
-        .chatbot [class*="bubble"],
-        .chatbot div,
-        .chatbot span,
-        .chatbot p {
-            background: transparent !important;
-            background-color: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-            color: black !important;
-        }
-        
-        /* Ensure chat container stays white */
-        .chatbot > div {
-            background: white !important;
-            background-color: white !important;
-        }
-        
-        /* Bold text for important information */
-        .gradio-container .prose strong,
-        .gradio-container .prose b {
-            font-weight: bold !important;
-        }
+/* FINAL POLISH: FULLSCREEN CHAT + CLEAN BUBBLES WITH NO OVERLAP ARTIFACTS */
+
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #7bb3f0;
+    --light-bg: #f8f9fa;
+    --text-color: #333;
+    --border-color: #ccc;
+    --focus-color: #4a90e2;
+    --crisis-bg: #fff3cd;
+    --crisis-border: #ffeaa7;
+    --crisis-text: #856404;
+}
+
+body, html {
+    height: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #f0f2f5 !important;
+    overflow: hidden !important;
+}
+
+.gradio-container {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: none !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    line-height: 1.6 !important;
+    overflow: hidden !important;
+    background: #f8f9fa !important;
+    color: var(--text-color) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+}
+
+.gradio-container h1 {
+    text-align: center !important;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+    color: white !important;
+    padding: 24px !important;
+    border-radius: 16px !important;
+    margin: 0 0 24px 0 !important;
+    font-size: 32px !important;
+    font-weight: 700 !important;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.1) !important;
+}
+
+.gradio-container .prose {
+    background: var(--crisis-bg) !important;
+    border: 2px solid var(--crisis-border) !important;
+    border-radius: 12px !important;
+    padding: 20px !important;
+    margin-bottom: 30px !important;
+    font-size: 16px !important;
+    color: var(--crisis-text) !important;
+}
+
+.gradio-container .prose h3,
+.gradio-container .prose h4,
+.gradio-container .prose strong {
+    color: var(--crisis-text) !important;
+}
+
+.chatbot {
+    background: white !important;
+    border: 4px solid var(--border-color) !important;
+    border-radius: 20px !important;
+    height: 100% !important;
+    width: 100% !important;
+    overflow-y: auto !important;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.12) !important;
+    padding: 24px !important;
+    position: relative !important;
+}
+
+.chatbot .message {
+    padding: 16px 20px !important;
+    margin: 14px 0 !important;
+    border-radius: 14px !important;
+    font-size: 18px !important;
+    line-height: 1.6 !important;
+    word-wrap: break-word !important;
+    max-width: 85% !important;
+    background: inherit !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+.chatbot [data-testid="user"] {
+    background: var(--primary-color) !important;
+    color: white !important;
+    margin-left: auto !important;
+    border-radius: 10px !important;
+}
+
+.chatbot [data-testid="bot"] {
+    background: var(--light-bg) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 10px !important;
+}
+
+.chatbot textarea {
+    border: 2px solid var(--border-color) !important;
+    border-radius: 12px !important;
+    padding: 18px 24px !important;
+    font-size: 16px !important;
+    font-family: inherit !important;
+    background: white !important;
+    resize: vertical !important;
+    min-height: 80px !important;
+    transition: all 0.3s ease !important;
+}
+
+.chatbot textarea:focus {
+    border-color: var(--focus-color) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2) !important;
+    transform: translateY(-1px) !important;
+}
+
+.chatbot textarea::placeholder {
+    color: #777 !important;
+    font-style: italic !important;
+}
+
+.chatbot button {
+    background: var(--primary-color) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 10px !important;
+    padding: 14px 26px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.chatbot button:hover {
+    background: var(--secondary-color) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15) !important;
+}
+
+.examples {
+    background: var(--light-bg) !important;
+    border: 2px solid var(--border-color) !important;
+    border-radius: 14px !important;
+    padding: 22px !important;
+    margin-top: 30px !important;
+}
+
+.examples::before {
+    content: none !important;
+}
+
+.examples button {
+    background: white !important;
+    color: var(--text-color) !important;
+    border: 2px solid var(--border-color) !important;
+    border-radius: 10px !important;
+    padding: 10px 15px !important;
+    margin: 6px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.examples button:hover {
+    background: var(--primary-color) !important;
+    color: white !important;
+    border-color: var(--primary-color) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
+}
+
+button:focus, textarea:focus {
+    outline: 3px solid var(--focus-color) !important;
+    outline-offset: 2px !important;
+}
         """
     )
     
