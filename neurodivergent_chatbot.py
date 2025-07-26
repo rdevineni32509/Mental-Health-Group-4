@@ -283,10 +283,10 @@ def find_free_port(start_port=7860):
     return None
 
 def create_interface():
-    """Create enhanced neurodivergent-friendly ChatInterface with improved styling"""
+    """Create modern messaging interface like iMessage/WhatsApp"""
     
     def chat_with_luna(message, history):
-        """Chat function for enhanced messaging interface"""
+        """Chat function for messenger-style interface"""
         if not message or not message.strip():
             return "I'm here when you're ready to share. Take your time. 💙"
         
@@ -317,226 +317,229 @@ def create_interface():
             logger.error(f"Error in chat_with_luna: {e}")
             return "I encountered an unexpected issue. This isn't your fault - sometimes technology has hiccups. Please try again. 💙"
     
-    # Enhanced ChatInterface with improved styling and features
+    # Create clean modern messaging interface with safety information
     interface = gr.ChatInterface(
         fn=chat_with_luna,
-        title="🌙 LUNA - Your Neurodivergent-Friendly Mental Health Companion",
+        title="🌙 LUNA",
         description="""
-### 🛡️ **Important Safety Information**
+🛡️ IMPORTANT SAFETY INFORMATION
 
-**This is peer support, not professional therapy or medical advice.**
+⚠️ This is peer support, not professional therapy or medical advice.
 
-LUNA provides emotional support and understanding but cannot replace professional mental health care, diagnosis, or treatment. If you are experiencing severe mental health symptoms, please consult with a qualified healthcare provider.
+Luna provides emotional support and understanding but cannot replace professional mental health care, diagnosis, or treatment. If you are experiencing severe mental health symptoms, please consult with a qualified healthcare provider.
 
-#### 🆘 **Crisis Resources - Available 24/7:**
+🆘 CRISIS RESOURCES - AVAILABLE 24/7:
 
-- **📞 988** - National Suicide Prevention Lifeline  
-- **📱 741741** - Crisis Text Line (Text HOME)  
-- **🆘 911** - Emergency Services  
+• 988 - National Suicide Prevention Lifeline
+  Free, confidential support for people in distress and prevention resources
 
-**💙 Remember:** You deserve support and care. If you are having thoughts of self-harm or suicide, please reach out immediately.
+• Text HOME to 741741 - Crisis Text Line
+  Free, 24/7 support via text message with trained crisis counselors
+
+• 911 - Emergency Services
+  For immediate medical emergencies or if you are in immediate danger
+
+💙 Remember: You deserve support and care. If you are having thoughts of self-harm or suicide, please reach out immediately. These resources are staffed by trained professionals who understand what you are going through.
 
 ---
 
-**🌟 Welcome to your safe space for neurodivergent mental health support.**
+Your mental health companion specialised in Neurodivergence conversations
         """,
         examples=[
-            "🧠 My executive function is terrible today and I can't focus",
-            "😰 I'm struggling with social situations and feel anxious", 
-            "🌪️ How do I manage sensory overload when I'm out in public?",
-            "💭 I had a meltdown earlier and I'm feeling ashamed about it",
-            "👥 I feel like I don't fit in anywhere",
-            "🎭 I'm tired of masking all the time and feeling exhausted",
-            "🤔 I don't understand social cues and it's making me anxious",
-            "💪 Can you help me understand why I'm feeling this way?"
+            "I'm feeling overwhelmed with work and don't know how to cope",
+            "Can you help me understand why I'm feeling this way?",
+            "I'm struggling with social situations and feel anxious",
+            "How do I manage sensory overload when I'm out in public?",
+            "I had a meltdown earlier and I'm feeling ashamed about it",
+            "My executive function is terrible today and I can't focus",
+            "I feel like I don't fit in anywhere",
+            "I'm having trouble with social cues and it's making me anxious"
         ],
-        theme=gr.themes.Soft(),
+        theme=gr.themes.Default(),
         css="""
-/* FINAL POLISH: FULLSCREEN CHAT + CLEAN BUBBLES WITH NO OVERLAP ARTIFACTS */
-
-:root {
-    --primary-color: #4a90e2;
-    --secondary-color: #7bb3f0;
-    --light-bg: #f8f9fa;
-    --text-color: #333;
-    --border-color: #ccc;
-    --focus-color: #4a90e2;
-    --crisis-bg: #fff3cd;
-    --crisis-border: #ffeaa7;
-    --crisis-text: #856404;
-}
-
-body, html {
-    height: 100% !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    background: #f0f2f5 !important;
-    overflow: hidden !important;
-}
-
-.gradio-container {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    max-width: none !important;
-    margin: 0 auto !important;
-    padding: 0 !important;
-    line-height: 1.6 !important;
-    overflow: hidden !important;
-    background: #f8f9fa !important;
-    color: var(--text-color) !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-}
-
-.gradio-container h1 {
-    text-align: center !important;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
-    color: white !important;
-    padding: 24px !important;
-    border-radius: 16px !important;
-    margin: 0 0 24px 0 !important;
-    font-size: 32px !important;
-    font-weight: 700 !important;
-    box-shadow: 0 6px 10px rgba(0,0,0,0.1) !important;
-}
-
-.gradio-container .prose {
-    background: var(--crisis-bg) !important;
-    border: 2px solid var(--crisis-border) !important;
-    border-radius: 12px !important;
-    padding: 20px !important;
-    margin-bottom: 30px !important;
-    font-size: 16px !important;
-    color: var(--crisis-text) !important;
-}
-
-.gradio-container .prose h3,
-.gradio-container .prose h4,
-.gradio-container .prose strong {
-    color: var(--crisis-text) !important;
-}
-
-.chatbot {
-    background: white !important;
-    border: 4px solid var(--border-color) !important;
-    border-radius: 20px !important;
-    height: 100% !important;
-    width: 100% !important;
-    overflow-y: auto !important;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.12) !important;
-    padding: 24px !important;
-    position: relative !important;
-}
-
-.chatbot .message {
-    padding: 16px 20px !important;
-    margin: 14px 0 !important;
-    border-radius: 14px !important;
-    font-size: 18px !important;
-    line-height: 1.6 !important;
-    word-wrap: break-word !important;
-    max-width: 85% !important;
-    background: inherit !important;
-    position: relative !important;
-    z-index: 2 !important;
-}
-
-.chatbot [data-testid="user"] {
-    background: var(--primary-color) !important;
-    color: white !important;
-    margin-left: auto !important;
-    border-radius: 10px !important;
-}
-
-.chatbot [data-testid="bot"] {
-    background: var(--light-bg) !important;
-    color: var(--text-color) !important;
-    border: 1px solid var(--border-color) !important;
-    border-radius: 10px !important;
-}
-
-.chatbot textarea {
-    border: 2px solid var(--border-color) !important;
-    border-radius: 12px !important;
-    padding: 18px 24px !important;
-    font-size: 16px !important;
-    font-family: inherit !important;
-    background: white !important;
-    resize: vertical !important;
-    min-height: 80px !important;
-    transition: all 0.3s ease !important;
-}
-
-.chatbot textarea:focus {
-    border-color: var(--focus-color) !important;
-    outline: none !important;
-    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2) !important;
-    transform: translateY(-1px) !important;
-}
-
-.chatbot textarea::placeholder {
-    color: #777 !important;
-    font-style: italic !important;
-}
-
-.chatbot button {
-    background: var(--primary-color) !important;
-    color: white !important;
-    border: none !important;
-    border-radius: 10px !important;
-    padding: 14px 26px !important;
-    font-size: 16px !important;
-    font-weight: 600 !important;
-    cursor: pointer !important;
-    transition: all 0.3s ease !important;
-}
-
-.chatbot button:hover {
-    background: var(--secondary-color) !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15) !important;
-}
-
-.examples {
-    background: var(--light-bg) !important;
-    border: 2px solid var(--border-color) !important;
-    border-radius: 14px !important;
-    padding: 22px !important;
-    margin-top: 30px !important;
-}
-
-.examples::before {
-    content: none !important;
-}
-
-.examples button {
-    background: white !important;
-    color: var(--text-color) !important;
-    border: 2px solid var(--border-color) !important;
-    border-radius: 10px !important;
-    padding: 10px 15px !important;
-    margin: 6px !important;
-    font-size: 14px !important;
-    font-weight: 500 !important;
-    cursor: pointer !important;
-    transition: all 0.3s ease !important;
-}
-
-.examples button:hover {
-    background: var(--primary-color) !important;
-    color: white !important;
-    border-color: var(--primary-color) !important;
-    transform: translateY(-1px) !important;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
-}
-
-button:focus, textarea:focus {
-    outline: 3px solid var(--focus-color) !important;
-    outline-offset: 2px !important;
-}
+        /* Soft backgrounds with clean styling */
+        
+        /* Container with soft background */
+        .gradio-container {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+            max-width: 800px !important;
+            margin: 0 auto !important;
+            padding: 20px !important;
+            background: #f8f9fa !important;
+        }
+        
+        /* Header with soft background */
+        .gradio-container h1 {
+            text-align: center !important;
+            font-size: 28px !important;
+            font-weight: bold !important;
+            margin: 0 0 20px 0 !important;
+            color: #333 !important;
+            background: #e9ecef !important;
+            padding: 15px !important;
+            border-radius: 8px !important;
+        }
+        
+        /* Safety information with soft background and bold text */
+        .gradio-container .prose {
+            background: #fff3cd !important;
+            border: 1px solid #ffeaa7 !important;
+            border-radius: 8px !important;
+            padding: 20px !important;
+            margin-bottom: 20px !important;
+            font-size: 15px !important;
+            line-height: 1.6 !important;
+            color: #856404 !important;
+        }
+        
+        /* Make all safety info bold */
+        .gradio-container .prose,
+        .gradio-container .prose p,
+        .gradio-container .prose li {
+            font-weight: bold !important;
+        }
+        
+        /* Chat interface with soft background */
+        .chatbot {
+            background: white !important;
+            border: 1px solid #dee2e6 !important;
+            border-radius: 8px !important;
+            margin: 0 auto !important;
+            height: 500px !important;
+            min-height: 500px !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+        }
+        
+        /* Chat container with soft background */
+        .chatbot > div {
+            background: #fafafa !important;
+            padding: 15px !important;
+            height: 100% !important;
+            overflow-y: auto !important;
+        }
+        
+        /* User messages with soft blue background */
+        .chatbot div[data-testid="user"],
+        .chatbot .user,
+        .chatbot div[data-testid="user"] p,
+        .chatbot .user p,
+        .chatbot .message.user,
+        .chatbot [class*="user"] {
+            background: #e3f2fd !important;
+            color: #1565c0 !important;
+            border: 1px solid #bbdefb !important;
+            border-radius: 8px !important;
+            padding: 12px !important;
+            margin: 8px 0 !important;
+            font-size: 16px !important;
+            line-height: 1.4 !important;
+            max-width: 85% !important;
+            margin-left: auto !important;
+            word-wrap: break-word !important;
+            display: block !important;
+        }
+        
+        /* Bot messages with soft gray background */
+        .chatbot div[data-testid="bot"],
+        .chatbot .bot,
+        .chatbot div[data-testid="bot"] p,
+        .chatbot .bot p,
+        .chatbot .message.bot,
+        .chatbot [class*="bot"] {
+            background: #f5f5f5 !important;
+            color: #333 !important;
+            border: 1px solid #e0e0e0 !important;
+            border-radius: 8px !important;
+            padding: 12px !important;
+            margin: 8px 0 !important;
+            font-size: 16px !important;
+            line-height: 1.4 !important;
+            max-width: 85% !important;
+            word-wrap: break-word !important;
+            display: block !important;
+        }
+        
+        /* User messages - bold prefix */
+        .chatbot div[data-testid="user"] p::before,
+        .chatbot .user p::before,
+        .chatbot .message.user::before,
+        .chatbot [class*="user"]::before {
+            content: "You:" !important;
+            font-weight: bold !important;
+        }
+        
+        /* Bot messages - bold prefix */
+        .chatbot div[data-testid="bot"] p::before,
+        .chatbot .bot p::before,
+        .chatbot .message.bot::before,
+        .chatbot [class*="bot"]::before {
+            content: "Luna:" !important;
+            font-weight: bold !important;
+        }
+        
+        /* Input area with soft styling */
+        .chatbot textarea {
+            border: 1px solid #ced4da !important;
+            border-radius: 6px !important;
+            padding: 12px !important;
+            font-size: 16px !important;
+            font-family: inherit !important;
+            background: white !important;
+            resize: none !important;
+            outline: none !important;
+            color: #333 !important;
+        }
+        
+        .chatbot textarea:focus {
+            border-color: #80bdff !important;
+            box-shadow: 0 0 0 2px rgba(0,123,255,0.25) !important;
+        }
+        
+        .chatbot textarea::placeholder {
+            color: #6c757d !important;
+        }
+        
+        /* Submit button with soft styling */
+        .chatbot button {
+            background: #007bff !important;
+            color: white !important;
+            border: 1px solid #007bff !important;
+            border-radius: 6px !important;
+            padding: 10px 20px !important;
+            font-size: 16px !important;
+            font-weight: bold !important;
+            cursor: pointer !important;
+        }
+        
+        .chatbot button:hover {
+            background: #0056b3 !important;
+            border-color: #0056b3 !important;
+        }
+        
+        /* Examples section with soft background */
+        .examples {
+            background: #f8f9fa !important;
+            border: 1px solid #dee2e6 !important;
+            border-radius: 8px !important;
+            padding: 15px !important;
+            margin-top: 20px !important;
+        }
+        
+        .examples button {
+            background: white !important;
+            border: 1px solid #ced4da !important;
+            border-radius: 6px !important;
+            padding: 8px 12px !important;
+            margin: 4px !important;
+            font-size: 14px !important;
+            color: #495057 !important;
+            cursor: pointer !important;
+        }
+        
+        .examples button:hover {
+            background: #e9ecef !important;
+            border-color: #adb5bd !important;
+        }
         """
     )
     
